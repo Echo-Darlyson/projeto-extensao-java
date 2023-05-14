@@ -24,7 +24,7 @@ public class ExcelReader {
             XSSFRow row = (XSSFRow) iterator.next();
             Iterator<Cell> cellIterator = row.cellIterator();
 
-            String[] rowArr = new String[9];
+            String[] rowArr = new String[10];
             int i = 0;
 
             while(cellIterator.hasNext()){
@@ -41,7 +41,7 @@ public class ExcelReader {
 
         Main.model.removeRow(0);
 
-        for(int j = 4; j <= 8; j++){
+        for(int j = 4; j <= 9; j++){
             for(int i = 1; i <= 71; i++){
                 switch (j) {
                     case 4 -> {
@@ -78,6 +78,13 @@ public class ExcelReader {
                             Main.presencaFaunaNativa++;
                         } else {
                             Main.semPresencaFaunaNativa++;
+                        }
+                    }
+                    case 9 -> {
+                        if (sheet.getRow(i).getCell(9).getStringCellValue().strip().equals("Sim")) {
+                            Main.mitigaIlhaCalor++;
+                        } else {
+                            Main.naoMitigaIlhaCalor++;
                         }
                     }
                 }

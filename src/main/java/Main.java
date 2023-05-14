@@ -22,8 +22,9 @@ public class Main {
     private JTable table1;
     private JCheckBox vegetaConservadaCheckBox;
     private JPanel panelNorthEast;
+    private JCheckBox ilhasDeCalorCheckBox;
 
-    String[] header = {"Nome", "Categoria", "Estado", "Munícipio", "Área Verde Demarcada (m²)", "Área Arborizada > 50%", "Área com vegetação perturbada, escassa ou ausente > 50%",  "Área vegetada conservada  > 50%", "Presença de fauna nativa"};
+    String[] header = {"Nome", "Categoria", "Estado", "Munícipio", "Área Verde Demarcada (m²)", "Área Arborizada > 50%", "Área com vegetação perturbada, escassa ou ausente > 50%",  "Área vegetada conservada  > 50%", "Presença de fauna nativa", "Mitigação das Ilhas de Calor"};
     static DefaultTableModel model;
 
     static int qtdAreaArborizadaMaior50 = 0;
@@ -37,6 +38,9 @@ public class Main {
 
     static int presencaFaunaNativa = 0;
     static int semPresencaFaunaNativa = 0;
+
+    static int mitigaIlhaCalor = 0;
+    static int naoMitigaIlhaCalor = 0;
 
     File excelFilePath = new File("dados_areas_verdes_urbanas.xlsx");
     static File iconFilePath = new File("icon.png");
@@ -73,6 +77,11 @@ public class Main {
                     faunaNativa.pieChart(presencaFaunaNativa, semPresencaFaunaNativa, "Fauna Nativa", "Com Fauna Nativa", "Sem Fauna Nativa");
                 }
 
+                if(ilhasDeCalorCheckBox.isSelected()){
+                    Graphics ilhasDeCalor = new Graphics("Ilhas de Calor");
+                    ilhasDeCalor.pieChart(mitigaIlhaCalor, naoMitigaIlhaCalor, "Mitigação de Ilhas de Calor", "Mitiga", "Não Mitiga");
+                }
+
                 String resume = "<html>" + "Áreas com Arborização &gt; 50%: " + qtdAreaArborizadaMaior50 + "<br>";
                 resume += "Áreas com Arborização &lt; 50%: " + qtdAreaArborizadaMenor50 + "<br><br>";
                 resume += "Áreas com Vegetação Perturbada &gt; 50%: " + qtdAreaVegetPerturbadaMaior50 + "<br>";
@@ -80,7 +89,9 @@ public class Main {
                 resume += "Áreas com Vegetação Conservada &gt; 50%: " + qtdAreaVegetConservadaMaior50 + "<br>";
                 resume += "Áreas com Vegetação Conservada &lt; 50%: " + qtdAreaVegetConservadaMenor50 + "<br><br>";
                 resume += "Áreas com Fauna Nativa: " + presencaFaunaNativa + "<br>";
-                resume += "Áreas sem Fauna Nativa: " + semPresencaFaunaNativa + "<br>";
+                resume += "Áreas sem Fauna Nativa: " + semPresencaFaunaNativa + "<br><br>";
+                resume += "Áreas com Mitigação de Ilhas de Calor: " + mitigaIlhaCalor + "<br>";
+                resume += "Áreas sem Mitigação de Ilhas de Calor: " + naoMitigaIlhaCalor + "<br>";
 
                 labelResume.setText(resume);
 
@@ -95,6 +106,9 @@ public class Main {
 
                 presencaFaunaNativa = 0;
                 semPresencaFaunaNativa = 0;
+
+                mitigaIlhaCalor = 0;
+                naoMitigaIlhaCalor = 0;
             }
         });
     }
@@ -112,7 +126,7 @@ public class Main {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        model = new DefaultTableModel(0, 9);
+        model = new DefaultTableModel(0, 10);
         model.setColumnIdentifiers(header);
         table1 = new JTable(model);
     }
