@@ -6,19 +6,23 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
+import java.awt.*;
+
 public class Graphics extends JFrame {
 
-    public Graphics() {
+    public Graphics(String windowTitle) {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setTitle("Gráfico");
+        setTitle(windowTitle);
         setSize(700,500);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
+        Image icon = Toolkit.getDefaultToolkit().getImage(Main.iconFilePath.getAbsolutePath());
+        setIconImage(icon);
 
     }
 
-    public void criarGraficoPizza (int valorColetado1, int valorColetado2, String titulo, String valor1, String valor2){
+    public void pieChart (int valorColetado1, int valorColetado2, String titulo, String valor1, String valor2){
 
         DefaultPieDataset pizza = new DefaultPieDataset();
         pizza.setValue(valor1, valorColetado1);
@@ -29,7 +33,7 @@ public class Graphics extends JFrame {
         add(painel);
     }
 
-    public void criarGraficoBarra(double somatAreaP, double somaAreaI, double somatAreaM, double somatAreaC){
+    public void barChart (double somatAreaP, double somaAreaI, double somatAreaM, double somatAreaC){
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(somatAreaP, "Pereiro", "2020-2022");

@@ -50,27 +50,27 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 file.readExcel();
 
-                Graphics area = new Graphics();
-                area.criarGraficoBarra(somatAreas[0], somatAreas[1], somatAreas[2], somatAreas[3]);
+                Graphics area = new Graphics("Somatório de Áreas");
+                area.barChart(somatAreas[0], somatAreas[1], somatAreas[2], somatAreas[3]);
 
                 if(arborCheckBox.isSelected()){
-                    Graphics areaArborizada = new Graphics();
-                    areaArborizada.criarGraficoPizza(qtdAreaArborizadaMaior50, qtdAreaArborizadaMenor50, "Arborização das Áreas", "Arborização > 50%", "Arborização < 50%");
+                    Graphics areaArborizada = new Graphics("Área Arborizada");
+                    areaArborizada.pieChart(qtdAreaArborizadaMaior50, qtdAreaArborizadaMenor50, "Arborização das Áreas", "Arborização > 50%", "Arborização < 50%");
                 }
 
                 if(vegetaPerturbadaCheckBox.isSelected()){
-                    Graphics vegetacaoPerturbada = new Graphics();
-                    vegetacaoPerturbada.criarGraficoPizza(qtdAreaVegetPerturbadaMaior50, qtdAreaVegetPerturbadaMenor50, "Vegetação Perturbada, Escassa ou Ausente", "Vegetação Perturbada, Escassa ou Ausente > 50%", "Vegetação Perturbada, Escassa ou Ausente < 50%");
+                    Graphics vegetacaoPerturbada = new Graphics("Vegetação Perturbada, Escassa ou Ausente");
+                    vegetacaoPerturbada.pieChart(qtdAreaVegetPerturbadaMaior50, qtdAreaVegetPerturbadaMenor50, "Vegetação Perturbada, Escassa ou Ausente", "Vegetação Perturbada, Escassa ou Ausente > 50%", "Vegetação Perturbada, Escassa ou Ausente < 50%");
                 }
 
                 if(vegetaConservadaCheckBox.isSelected()){
-                    Graphics vegetacaoConservada = new Graphics();
-                    vegetacaoConservada.criarGraficoPizza(qtdAreaVegetConservadaMaior50, qtdAreaVegetConservadaMenor50, "Vegetação Conservada", "Conservação > 50%", "Conservação < 50%");
+                    Graphics vegetacaoConservada = new Graphics("Vegetação Conservada");
+                    vegetacaoConservada.pieChart(qtdAreaVegetConservadaMaior50, qtdAreaVegetConservadaMenor50, "Vegetação Conservada", "Conservação > 50%", "Conservação < 50%");
                 }
 
                 if(faunaNativaCheckBox.isSelected()){
-                    Graphics faunaNativa = new Graphics();
-                    faunaNativa.criarGraficoPizza(presencaFaunaNativa, semPresencaFaunaNativa, "Fauna Nativa", "Com Fauna Nativa", "Sem Fauna Nativa");
+                    Graphics faunaNativa = new Graphics("Presença de Fauna Nativa");
+                    faunaNativa.pieChart(presencaFaunaNativa, semPresencaFaunaNativa, "Fauna Nativa", "Com Fauna Nativa", "Sem Fauna Nativa");
                 }
 
                 String resume = "<html>" + "Áreas com Arborização &gt; 50%: " + qtdAreaArborizadaMaior50 + "<br>";
