@@ -53,7 +53,7 @@ public class ExcelReader {
                             case "Mauriti" -> Main.somatAreas[2] += sheet.getRow(i).getCell(4).getNumericCellValue();
                             case "Caucaia" -> Main.somatAreas[3] += sheet.getRow(i).getCell(4).getNumericCellValue();
                         }
-
+                        break;
                     case 5:
                         if(sheet.getRow(i).getCell(5).getStringCellValue().strip().equals("Sim")){
                             Main.qtdAreaArborizadaMaior50++;
@@ -81,6 +81,7 @@ public class ExcelReader {
                         }else{
                             Main.semPresencaFaunaNativa++;
                         }
+                        break;
                 }
             }
         }

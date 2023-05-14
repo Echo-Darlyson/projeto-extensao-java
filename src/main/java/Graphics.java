@@ -11,14 +11,14 @@ public class Graphics extends JFrame {
     public Graphics() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Gráfico");
-        setSize(800,600);
+        setSize(700,500);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
 
     }
 
-    public void criarGraficoPizza (int valorColetado1, int valorColetado2, String titulo, String valor1, String valor2) {
+    public void criarGraficoPizza (int valorColetado1, int valorColetado2, String titulo, String valor1, String valor2){
 
         DefaultPieDataset pizza = new DefaultPieDataset();
         pizza.setValue(valor1, valorColetado1);
